@@ -1,32 +1,38 @@
 "use client";
 import { Form, Input, Button, message } from "antd";
 import { useRouter, useSearchParams } from "next/navigation";
-import { signIn } from "next-auth/react";
 import styles from "./login.module.scss";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Login() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+  const { login } = useAuth();
 
   const onFinish = async (values: any) => {
-    try {
-      const result = await signIn("credentials", {
-        username: values.username,
-        password: values.password,
-        redirect: false,
-      });
-
-      if (result?.error) {
-        message.error("登录失败：" + result.error);
-        return;
-      }
-
-      message.success("登录成功！");
-      router.push(callbackUrl);
-    } catch (error) {
-      message.error("登录失败！");
+    const result = await login(values.username, values.password);
+    // console.log("result", result);
+    if (result?.error) {
+      message.error("登录失败：" + result.error);
+      return;
     }
+
+    message.success("登录成功！");
+    router.push(callbackUrl);
+    // try {
+    //   const result = await login(values.username, values.password);
+    //   if (result?.error) {
+    //     message.error("登录失败：" + result.error);
+    //     return;
+    //   }
+
+    //   message.success("登录成功！");
+    //   router.push(callbackUrl);
+    // } catch (error) {
+    //   console.error("登录失败！", error);
+    //   message.error("登录失败！");
+    // }
   };
 
   return (

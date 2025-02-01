@@ -2,34 +2,6 @@ import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { UserRole } from "@/types/auth";
 
-// 模拟用户数据
-const users = [
-  {
-    id: "1",
-    name: "Admin User",
-    email: "admin@example.com",
-    username: "admin",
-    password: "password", // 实际项目中应该使用加密密码
-    role: UserRole.ADMIN,
-  },
-  {
-    id: "2",
-    name: "Normal User",
-    email: "user@example.com",
-    username: "user",
-    password: "password",
-    role: UserRole.USER,
-  },
-  {
-    id: "3",
-    name: "VIP User",
-    email: "vip@example.com",
-    username: "vip",
-    password: "password",
-    role: UserRole.VIP,
-  },
-];
-
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -37,27 +9,41 @@ export const authOptions: NextAuthOptions = {
       credentials: {
         username: { label: "用户名", type: "text" },
         password: { label: "密码", type: "password" },
+        userInfo: { label: "用户信息", type: "text" }, // 添加用户信息字段
       },
+      // async authorize(credentials) {
+      //   console.log("credentials", credentials);
+      //   if (!credentials?.username || !credentials?.password) {
+      //     throw new Error("请输入用户名和密码");
+      //   }
+
+      //   try {
+      //     // 调用 API 进行登录验证
+      //     const response = await login({
+      //       username: credentials.username,
+      //       password: credentials.password,
+      //     });
+
+      //     // 返回用户信息
+      //     return {
+      //       id: response.user.id,
+      //       name: response.user.name,
+      //       email: response.user.email,
+      //       role: response.user.role,
+      //     };
+      //   } catch (error: any) {
+      //     throw new Error(error.message || "登录失败");
+      //   }
+      // },
       async authorize(credentials) {
-        if (!credentials?.username || !credentials?.password) {
-          throw new Error("请输入用户名和密码");
+        if (!credentials?.userInfo) {
+          return null;
         }
 
-        // 在实际项目中，这里应该是数据库查询
-        const user = users.find(
-          (user) => user.username === credentials.username && user.password === credentials.password,
-        );
+        // 直接使用传递过来的用户信息
+        const userInfo = JSON.parse(credentials.userInfo);
 
-        if (!user) {
-          throw new Error("用户名或密码错误");
-        }
-
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          role: user.role,
-        };
+        return userInfo;
       },
     }),
   ],
@@ -81,11 +67,14 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/login",
-    error: "/unauthorized",
+    // error: "/unauthorized",
+    error: "/error",
+    signOut: "/",
   },
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-  secret: process.env.NEXTAUTH_SECRET || "your-secret-key", // 在生产环境中使用环境变量
+  // secret: process.env.NEXTAUTH_SECRET,
+  secret: "test-secret-please-change-me",
 };
