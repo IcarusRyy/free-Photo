@@ -5,6 +5,7 @@ export default {
     profile: "个人中心",
     admin: "管理后台",
     logout: "退出登录",
+    userInfo: "用户信息",
   },
   auth: {
     login: {
@@ -22,5 +23,6 @@ export default {
   "Current role": "当前角色",
   "Enter the control panel": "进入控制台",
   "Enter the personal center": "进入个人中心",
-  "Enter the VIP center": "进入VIP中心",
+  // "Enter the VIP center": "进入VIP中心",
+  "User Info": "用户信息",
 };

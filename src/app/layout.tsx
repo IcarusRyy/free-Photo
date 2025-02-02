@@ -3,11 +3,8 @@
 import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { SessionProvider } from "next-auth/react";
-import dynamic from "next/dynamic";
+import I18nProvider from "@/components/I18nProvider";
 import Header from "@/components/Header";
-const I18nProvider = dynamic(() => import("@/components/I18nProvider"), {
-  ssr: false,
-});
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

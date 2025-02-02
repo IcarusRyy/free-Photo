@@ -5,10 +5,11 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Hyperspeed from "@/components/Hyperspeed";
 import { Trans } from "react-i18next";
-
+import { useTranslation } from "react-i18next";
 export default function Home() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const { t } = useTranslation();
 
   if (status === "loading") {
     return <div className="flex justify-center items-center min-h-screen">加载中...</div>;
@@ -38,6 +39,9 @@ export default function Home() {
               </Button>
               <Button type="primary" size="large" onClick={() => router.push("/vip")}>
                 <Trans>Enter the VIP center</Trans>
+              </Button>
+              <Button type="primary" size="large" onClick={() => router.push("/vip")}>
+                {t("common.logout")}
               </Button>
             </div>
           </div>

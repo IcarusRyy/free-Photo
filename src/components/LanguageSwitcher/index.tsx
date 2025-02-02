@@ -13,6 +13,7 @@ export default function LanguageSwitcher() {
 
   const handleChange = (value: string) => {
     i18n.changeLanguage(value);
+    // localStorage.setItem("i18nextLng", value);
   };
 
   if (!mounted) {
