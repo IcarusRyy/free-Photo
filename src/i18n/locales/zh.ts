@@ -17,4 +17,10 @@ export default {
     },
   },
   Login: "登录",
+  Register: "注册",
+  "Welcome back": "欢迎回来",
+  "Current role": "当前角色",
+  "Enter the control panel": "进入控制台",
+  "Enter the personal center": "进入个人中心",
+  "Enter the VIP center": "进入VIP中心",
 };

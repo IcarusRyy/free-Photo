@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Hyperspeed from "@/components/Hyperspeed";
+import { Trans } from "react-i18next";
 
 export default function Home() {
   const { data: session, status } = useSession();
@@ -22,17 +23,21 @@ export default function Home() {
       <div className=" z-10 h-full flex  justify-center ">
         {session ? (
           <div className="text-center h-full w-full">
-            <h1 className="text-4xl font-bold mb-4 text-gray-800 !text-[red] ">欢迎回来, {session.user.name}</h1>
-            <p className="text-gray-600 mb-8">当前角色: {session.user.role}</p>
+            <h1 className="text-4xl font-bold mb-4 text-gray-800 !text-[red] ">
+              <Trans>Welcome back</Trans>, {session.user.name}
+            </h1>
+            <p className="text-gray-600 mb-8">
+              <Trans>Current role</Trans>: {session.user.role}
+            </p>
             <div className="space-y-4">
               <Button type="primary" size="large" onClick={() => router.push("/dashboard")}>
-                进入控制台
+                <Trans>Enter the control panel</Trans>
               </Button>
               <Button type="primary" size="large" onClick={() => router.push("/profile")}>
-                进入个人中心
+                <Trans>Enter the personal center</Trans>
               </Button>
               <Button type="primary" size="large" onClick={() => router.push("/vip")}>
-                进入VIP中心
+                <Trans>Enter the VIP center</Trans>
               </Button>
             </div>
           </div>

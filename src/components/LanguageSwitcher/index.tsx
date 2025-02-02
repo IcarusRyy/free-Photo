@@ -1,13 +1,23 @@
 "use client";
 import { useTranslation } from "react-i18next";
 import { Select } from "antd";
+import { useEffect, useState } from "react";
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleChange = (value: string) => {
     i18n.changeLanguage(value);
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <Select
