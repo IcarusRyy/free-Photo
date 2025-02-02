@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import Hyperspeed from "@/components/Hyperspeed";
 import { Trans } from "react-i18next";
 import { useTranslation } from "react-i18next";
+import classNames from "classnames";
+import WaveButton from "@/components/BaseComp";
 export default function Home() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -18,7 +20,16 @@ export default function Home() {
   return (
     <div className="relative h-screen ">
       {/* 第一屏 */}
-      <Hyperspeed className="absolute inset-0" />
+      <Hyperspeed className={classNames("absolute  inset-0", "h-[calc(100vh-64px)]")} />
+      <div className="absolute top-[35%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <WaveButton
+          onClick={() => router.push("/profile")}
+          className="
+            flex-1"
+        >
+          <Trans>Join the Cyberpunk Plan</Trans>
+        </WaveButton>
+      </div>
       <div className="h-[100vh] w-[0]"></div>
       {/* 第二屏 */}
       <div className=" z-10 h-full flex  justify-center ">
