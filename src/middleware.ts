@@ -145,14 +145,19 @@ export async function middleware(req: NextRequest) {
   // 获取 token
   const token = await getToken({ req, secret: "test-secret-please-change-me" });
   const { pathname } = req.nextUrl;
-
+  // 已登录用户访问登录页时重定向到首页
+  if (pathname === "/login") {
+    if (token) {
+      return NextResponse.redirect(new URL("/", req.url));
+    }
+    // 未登录用户访问登录页,直接放行
+    return NextResponse.next();
+  }
   if (!token) {
     // 未登录，重定向到登录页
     return NextResponse.redirect(new URL("/login", req.url));
   }
-  if (token && pathname === "/login") {
-    return NextResponse.redirect(new URL("/", req.url));
-  }
+
   const userRole = token.role as UserRole;
 
   // 检查用户是否有权限访问当前路由

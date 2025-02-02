@@ -19,7 +19,7 @@ export default function Home() {
       <Hyperspeed className="absolute inset-0" />
       <div className="h-[100vh] w-[0]"></div>
       {/* 第二屏 */}
-      <div className=" z-10 h-full flex items-center justify-center flex-col">
+      <div className=" z-10 h-full flex  justify-center ">
         {session ? (
           <div className="text-center h-full w-full">
             <h1 className="text-4xl font-bold mb-4 text-gray-800 !text-[red] ">欢迎回来, {session.user.name}</h1>

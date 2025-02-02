@@ -3,6 +3,7 @@
 import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { SessionProvider } from "next-auth/react";
+import "../i18n";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

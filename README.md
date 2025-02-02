@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Assistant Project
 
-## Getting Started
+这是一个基于 Next.js 14 构建的 AI 项目，集成了多种先进的 AI 功能和视觉效果。
 
-First, run the development server:
+## 主要特性
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 🤖 智能对话：集成 AI 模型，提供自然的对话交互
+- 🎨 动态效果：使用 Three.js 实现高性能的 3D 视觉效果
+- 🚀 实时渲染：优化的 WebGL 渲染，提供流畅的用户体验
+- 💡 智能推荐：基于上下文的智能内容推荐
+- 🌐 响应式设计：完美适配各种设备屏幕
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 技术栈
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **前端框架**: Next.js 14
+- **3D 渲染**: Three.js
+- **样式方案**: Tailwind CSS
+- **状态管理**: Zustand
+- **AI 模型**: Claude API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 包管理工具
 
-## Learn More
+- 安装依赖：`pnpm install`
+- 启动开发环境：`pnpm dev`
+- 构建生产环境：`pnpm build`
+- 启动生产环境：`pnpm start`
 
-To learn more about Next.js, take a look at the following resources:
+## 项目结构
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/components`: 组件目录
+- `src/app/pages`: 应用配置目录
+- `src/api`: 数据接口
+- `src/hooks`: 自定义 hooks 目录
+- `src/styles`: 样式目录
+- `src/types`: 类型定义目录
+- `src/utils`: 工具函数目录
+- `src/lib/auth.ts`: 登录验证
