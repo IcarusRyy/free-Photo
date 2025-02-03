@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <div className="relative h-screen ">
       {/* 第一屏 */}
-      <Hyperspeed className={classNames("absolute  inset-0", "h-[calc(100vh-64px)]")} />
+      <Hyperspeed className={classNames("absolute  inset-0", "!h-[calc(100vh-64px)]")} />
       <div className="absolute top-[35%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
         <WaveButton
           onClick={() => router.push("/profile")}
@@ -74,88 +74,71 @@ export default function Home() {
         )}
       </div>
       {/* 第三屏及后续内容 */}
-      <div className=" bg-white text-black p-8">
-        <h2 className="text-3xl font-bold mb-6">系统特点</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">高效管理</h3>
-            <p>提供直观的界面和强大的功能，让管理变得简单高效。</p>
+      <div className="py-10 sm:py-16 sm:px-16 bg-[#F1F1F1] flex flex-col md:flex-row border-b border-[#D1D3D6] px-4 text-black">
+        <div className="md:w-2/5 md:order-1 md:pl-8 flex flex-col justify-center mb-4 md:mb-0">
+          <div className="mb-4">
+            <div un-sm="text-3xl" className="text-xl font-semibold leading-none tracking-tight">
+              <h2 className="my-0">
+                <Trans>Video to Animation</Trans>
+              </h2>
+            </div>
           </div>
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">数据安全</h3>
-            <p>采用先进的加密技术，确保您的数据安全。</p>
+          <div className="mb-4">
+            <div un-sm="text-xl" className="text-lg mb-6">
+              <Trans>
+                Breathe new artistic life into your videos! Our AI video-to-animation tool opens a world of creative
+                possibilities: choose from over 30 meticulously crafted artistic styles and watch as your ordinary
+                footage transforms into stunning animated masterpieces in high definition. From brief moments to
+                complete productions, every frame becomes a canvas for animation artistry, taking your creative work to
+                the next level.
+              </Trans>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <span className="btn-primary py-2 px-2 sm:px-6 font-semibold flex items-center">
+                <Trans>Try Video to Animation</Trans>
+              </span>
+            </div>
           </div>
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">实时分析</h3>
-            <p>提供实时数据分析和可视化报表，助您做出明智决策。</p>
+        </div>
+        <div className="md:w-3/5 md:order-2 flex items-center">
+          <div className="w-full aspect-video">
+            <video className="w-full h-full object-contain rounded" autoPlay loop muted playsInline>
+              <source src="/video/videoToCartoon.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
       </div>
-      <div className=" bg-white text-black p-8">
-        <h2 className="text-3xl font-bold mb-6">系统特点</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">高效管理</h3>
-            <p>提供直观的界面和强大的功能，让管理变得简单高效。</p>
-          </div>
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">数据安全</h3>
-            <p>采用先进的加密技术，确保您的数据安全。</p>
-          </div>
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">实时分析</h3>
-            <p>提供实时数据分析和可视化报表，助您做出明智决策。</p>
+      <div className="py-10 sm:py-16 sm:px-16 bg-[#F1F1F1] flex flex-col md:flex-row border-b border-[#D1D3D6] px-4 text-black">
+        <div className="md:w-3/5 md:order-1 flex items-center">
+          <div className="w-full aspect-video">
+            <video className="w-full h-full object-contain rounded" autoPlay loop muted playsInline>
+              <source src="/video/ironMan.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
-      </div>
-      <div className=" bg-white text-black p-8">
-        <h2 className="text-3xl font-bold mb-6">系统特点</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">高效管理</h3>
-            <p>提供直观的界面和强大的功能，让管理变得简单高效。</p>
+        <div className="md:w-2/5 md:order-2 md:pl-8 flex flex-col justify-center mb-4 md:mb-0">
+          <div className="mb-4">
+            <div un-sm="text-3xl" className="text-xl font-semibold leading-none tracking-tight">
+              <h2 className="my-0">
+                <Trans>Video Face Swap</Trans>
+              </h2>
+            </div>
           </div>
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">数据安全</h3>
-            <p>采用先进的加密技术，确保您的数据安全。</p>
-          </div>
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">实时分析</h3>
-            <p>提供实时数据分析和可视化报表，助您做出明智决策。</p>
-          </div>
-        </div>
-      </div>
-      <div className=" bg-white text-black p-8">
-        <h2 className="text-3xl font-bold mb-6">系统特点</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">高效管理</h3>
-            <p>提供直观的界面和强大的功能，让管理变得简单高效。</p>
-          </div>
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">数据安全</h3>
-            <p>采用先进的加密技术，确保您的数据安全。</p>
-          </div>
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">实时分析</h3>
-            <p>提供实时数据分析和可视化报表，助您做出明智决策。</p>
-          </div>
-        </div>
-      </div>
-      <div className=" bg-white text-black p-8">
-        <h2 className="text-3xl font-bold mb-6">系统特点</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">高效管理</h3>
-            <p>提供直观的界面和强大的功能，让管理变得简单高效。</p>
-          </div>
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">数据安全</h3>
-            <p>采用先进的加密技术，确保您的数据安全。</p>
-          </div>
-          <div className="p-6 bg-gray-100 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3">实时分析</h3>
-            <p>提供实时数据分析和可视化报表，助您做出明智决策。</p>
+          <div className="mb-4">
+            <div un-sm="text-xl" className="text-lg mb-6">
+              <Trans>
+                Imagine transforming any face in your videos or photos with just a few clicks. Our AI wizard brings you
+                a revolutionary visual experience: say goodbye to technical barriers and let your creativity soar.
+                Whether you're a professional creator or an enthusiastic explorer, this face transformation tool puts
+                the power of imagination at your fingertips. Let AI unlock endless possibilities and create a unique
+                visual world that's truly yours.
+              </Trans>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <span className="btn-primary py-2 px-2 sm:px-6 font-semibold flex items-center">
+                <Trans>Try Face Swap</Trans>
+              </span>
+            </div>
           </div>
         </div>
       </div>
