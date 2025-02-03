@@ -1,34 +1,33 @@
-import { useSession } from "next-auth/react";
+"use client";
 import { Avatar, Button, Dropdown } from "antd";
 import type { MenuProps } from "antd";
-import { Trans, useTranslation } from "react-i18next";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Header() {
-  const { data: session } = useSession();
-  const { t } = useTranslation();
+  const { user, loading, isAuthenticated, logout } = useAuth();
   const router = useRouter();
-  const { logout } = useAuth();
+  const pathname = usePathname();
+  const currentLocale = pathname.split("/")[1];
 
   const items: MenuProps["items"] = [
     {
       key: "dashboard",
-      label: t("common.dashboard"),
-      onClick: () => router.push("/dashboard"),
+      label: "Dashboard",
+      onClick: () => router.push(`/${currentLocale}/dashboard`),
     },
     {
       key: "profile",
-      label: t("common.profile"),
-      onClick: () => router.push("/profile"),
+      label: "Profile",
+      onClick: () => router.push(`/${currentLocale}/profile`),
     },
     {
       type: "divider",
     },
     {
       key: "logout",
-      label: t("common.logout"),
+      label: "Logout",
       onClick: () => logout(),
     },
   ];
@@ -37,23 +36,23 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-sm">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <h1 className="text-xl font-bold text-white">
-            <Trans>Logo</Trans>
+          <h1 onClick={() => router.push(`/${currentLocale}`)} className="text-xl font-bold text-white cursor-pointer">
+            Logo
           </h1>
         </div>
 
         <div className="flex items-center space-x-4">
           <LanguageSwitcher />
-          {session ? (
+          {isAuthenticated ? (
             <Dropdown menu={{ items }} placement="bottomRight">
               <div className="flex items-center space-x-2 cursor-pointer">
-                <Avatar>{session.user.name?.[0]}</Avatar>
-                <span className="text-white">{session.user.name}</span>
+                <Avatar>{user?.name?.[0]}</Avatar>
+                <span className="text-white">{user?.name}</span>
               </div>
             </Dropdown>
           ) : (
-            <Button type="primary" onClick={() => router.push("/login")}>
-              {t("auth.login.title")}
+            <Button type="primary" onClick={() => router.push(`/${currentLocale}/login`)}>
+              Login
             </Button>
           )}
         </div>

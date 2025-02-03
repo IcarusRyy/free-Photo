@@ -1,28 +1,31 @@
 "use client";
-import { useTranslation } from "react-i18next";
+import { usePathname, useRouter } from "next/navigation";
 import { Select } from "antd";
-import { useEffect, useState } from "react";
+import { locales } from "@/config/i18n";
 
 export default function LanguageSwitcher() {
-  const { i18n } = useTranslation();
-  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const handleChange = (newLocale: string) => {
+    const segments = pathname.split("/");
+    const currentScrollPosition = window.scrollY;
+    segments[1] = newLocale;
 
-  const handleChange = (value: string) => {
-    i18n.changeLanguage(value);
-    // localStorage.setItem("i18nextLng", value);
+    // 使用 replace 而不是 push，这样不会创建新的历史记录
+    router.replace(segments.join("/"), {
+      scroll: false, // 防止滚动重置
+    });
+
+    // 确保在路由变化后保持滚动位置
+    window.scrollTo(0, currentScrollPosition);
   };
 
-  if (!mounted) {
-    return null;
-  }
+  const currentLocale = pathname.split("/")[1];
 
   return (
     <Select
-      value={i18n.language}
+      value={currentLocale}
       onChange={handleChange}
       options={[
         { value: "zh", label: "中文" },

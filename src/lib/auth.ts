@@ -64,12 +64,17 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      // 确保重定向 URL 包含当前语言前缀
+      if (url.startsWith(baseUrl)) return url;
+      // 否则重定向到首页
+      return baseUrl;
+    },
   },
   pages: {
-    signIn: "/login",
-    // error: "/unauthorized",
-    error: "/error",
-    signOut: "/",
+    signIn: "/[lang]/login",
+    error: "/[lang]/error",
+    signOut: "/[lang]",
   },
   session: {
     strategy: "jwt",

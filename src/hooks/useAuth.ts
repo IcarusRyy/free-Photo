@@ -41,44 +41,50 @@
 // };
 
 import { login } from "@/api";
-
 import { useSession, signIn, signOut } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
 export const useAuth = () => {
   const { data: session, status } = useSession();
+  const pathname = usePathname();
+  const currentLocale = pathname.split("/")[1];
 
   const loginFn = async (username: string, password: string) => {
     try {
-      // 先调用 API 登录
-      // const test = await login({ username, password });
-      // console.log("test", test);
       const apiResponse = await login({ username, password });
 
-      // 然后使用 NextAuth 登录
       const result = await signIn("credentials", {
         username,
         password,
-        userInfo: JSON.stringify(apiResponse.user), // 将用户信息传递给 authorize
+        userInfo: JSON.stringify(apiResponse.user),
         redirect: false,
-        callbackUrl: "/dashboard",
+        callbackUrl: `/${currentLocale}/dashboard`,
       });
+
       if (!result?.ok) {
         throw new Error(result?.error || "登录失败");
       }
 
-      return result;
+      return {
+        ok: true,
+        url: result.url,
+        error: null,
+      };
     } catch (error: any) {
-      console.log("登录失败111！", error);
-      throw new Error(error.message || "登录失败");
+      return {
+        ok: false,
+        url: null,
+        error: error.message || "登录失败",
+      };
     }
   };
 
   const logout = async () => {
     try {
-      // 先调用 API 登出
-      await logout();
-      // 然后使用 NextAuth 登出
-      await signOut({ redirect: false });
+      await signOut({
+        redirect: false,
+        callbackUrl: `/${currentLocale}/login`,
+      });
     } catch (error: any) {
       throw new Error(error.message || "退出失败");
     }
