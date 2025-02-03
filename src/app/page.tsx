@@ -7,7 +7,7 @@ import Hyperspeed from "@/components/Hyperspeed";
 import { Trans } from "react-i18next";
 import { useTranslation } from "react-i18next";
 import classNames from "classnames";
-import WaveButton from "@/components/BaseComp";
+import WaveButton from "@/components/BaseComp/WaveButton";
 export default function Home() {
   const { data: session, status } = useSession();
   const router = useRouter();
