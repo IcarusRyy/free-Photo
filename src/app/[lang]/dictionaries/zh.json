@@ -5,7 +5,14 @@
         "profile": "个人中心",
         "admin": "管理后台",
         "logout": "退出登录",
-        "userInfo": "用户信息"
+        "userInfo": "用户信息",
+        "login": "登录",
+        "register": "注册",
+        "welcomeBack": "欢迎回来",
+        "currentRole": "当前角色",
+        "enterDashboard": "进入控制台",
+        "enterProfile": "进入个人中心",
+        "backToHome": "返回首页"
     },
     "auth": {
         "login": {
@@ -15,6 +22,13 @@
             "submit": "登录",
             "usernamePlaceholder": "请输入用户名",
             "passwordPlaceholder": "请输入密码"
+        },
+        "error": {
+            "title": "出错了",
+            "configuration": "系统配置错误，请联系管理员",
+            "accessDenied": "访问被拒绝，您没有权限访问该页面",
+            "verification": "验证失败，请重新登录",
+            "default": "发生了一些错误，请稍后重试"
         }
     },
     "Login": "登录",
