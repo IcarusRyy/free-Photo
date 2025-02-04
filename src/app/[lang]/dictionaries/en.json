@@ -17,10 +17,23 @@
             "passwordPlaceholder": "Please input your password"
         }
     },
+    "home": {
+        "videoAnimation": {
+            "title": "Video to Animation",
+            "description": "Breathe new artistic life into your videos! Our AI video-to-animation tool opens a world of creative possibilities: choose from over 30 meticulously crafted artistic styles and watch as your ordinary footage transforms into stunning animated masterpieces in high definition. From brief moments to complete productions, every frame becomes a canvas for animation artistry, taking your creative work to the next level.",
+            "tryButton": "Try Video to Animation"
+        },
+        "faceSwap": {
+            "title": "Face Swap",
+            "description": "Imagine transforming any face in your videos or photos with just a few clicks. Our AI wizard brings you a revolutionary visual experience: say goodbye to technical barriers and let your creativity soar. Whether you're a professional creator or an enthusiastic explorer, this face transformation tool puts the power of imagination at your fingertips. Let AI unlock endless possibilities and create a unique visual world that's truly yours.",
+            "tryButton": "Try Face Swap"
+        }
+    },
     "Login": "Login",
     "Register": "Register",
     "Welcome back": "Welcome back",
     "Current role": "Current role",
     "Enter the control panel": "Enter the control panel",
-    "Enter the personal center": "Enter the personal center"
+    "Enter the personal center": "Enter the personal center",
+    "User Info": "User Info"
 }

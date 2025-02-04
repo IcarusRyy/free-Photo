@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "antd";
 import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
