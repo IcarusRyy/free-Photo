@@ -19,7 +19,8 @@
     "postprocessing": "^6.36.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "three": "^0.167.1"
+    "three": "^0.167.1",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@types/negotiator": "^0.6.3",

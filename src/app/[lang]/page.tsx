@@ -1,18 +1,11 @@
 "use client";
-import { Button } from "antd";
-import Link from "next/link";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Hyperspeed from "@/components/Hyperspeed";
 import classNames from "classnames";
 import WaveButton from "@/components/BaseComp/WaveButton";
+import TestJump from "./testJump";
 export default function Home() {
-  // const { data: session, status } = useSession();
   const router = useRouter();
-
-  // if (status === "loading") {
-  //   return <div className="flex justify-center items-center min-h-screen">加载中...</div>;
-  // }
 
   return (
     <div className="relative h-screen ">
@@ -29,43 +22,7 @@ export default function Home() {
       </div>
       <div className="h-[100vh] w-[0]"></div>
       {/* 第二屏 */}
-      {/* <div className=" z-10 h-full flex  justify-center ">
-        {session ? (
-          <div className="text-center h-full w-full">
-            <h1 className="text-4xl font-bold mb-4 text-gray-800 !text-[red] ">Welcome back, {session.user.name}</h1>
-            <p className="text-gray-600 mb-8">Current role: {session.user.role}</p>
-            <div className="space-y-4">
-              <Button type="primary" size="large" onClick={() => router.push("/dashboard")}>
-                Enter the control panel
-              </Button>
-              <Button type="primary" size="large" onClick={() => router.push("/profile")}>
-                Enter the personal center
-              </Button>
-              <Button type="primary" size="large" onClick={() => router.push("/vip")}>
-                Enter the VIP center
-              </Button>
-              <Button type="primary" size="large" onClick={() => router.push("/vip")}>
-                123
-              </Button>
-            </div>
-          </div>
-        ) : (
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4 text-gray-800">欢迎来到管理系统</h1>
-            <p className="text-gray-600 mb-8">高效的企业管理解决方案</p>
-            <div className="space-x-4">
-              <Link href="/login">
-                <Button type="primary" size="large">
-                  登录系统
-                </Button>
-              </Link>
-              <Link href="/register">
-                <Button size="large">立即注册</Button>
-              </Link>
-            </div>
-          </div>
-        )}
-      </div> */}
+      <TestJump />
       {/* 第三屏及后续内容 */}
       <div className="py-10 sm:py-16 sm:px-16 bg-[#F1F1F1] flex flex-col md:flex-row border-b border-[#D1D3D6] px-4 text-black">
         <div className="md:w-2/5 md:order-1 md:pl-8 flex flex-col justify-center mb-4 md:mb-0">
