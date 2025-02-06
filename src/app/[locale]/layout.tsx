@@ -1,10 +1,9 @@
-// import Hyperspeed from "@/components/Hyperspeed";
 import "../globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import { SessionProvider } from "next-auth/react";
 import Header from "@/components/Header";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import SessionProvider from "@/components/SessionProvider";
 
 export default async function LocaleLayout({
   children,
@@ -25,10 +24,10 @@ export default async function LocaleLayout({
       <body className="relative">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AntdRegistry>
-            {/* <SessionProvider> */}
-            <Header />
-            <main className="pt-16">{children}</main>
-            {/* </SessionProvider> */}
+            <SessionProvider>
+              <Header />
+              <main className="pt-16">{children}</main>
+            </SessionProvider>
           </AntdRegistry>
         </NextIntlClientProvider>
       </body>

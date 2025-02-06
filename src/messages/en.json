@@ -14,9 +14,19 @@
         "admin": "Admin",
         "logout": "Logout"
     },
+    "home": {
+        "joinTheCyberpunkPlan": "Join the Cyberpunk Plan",
+        "videoToAnimation_title": "Video to Animation",
+        "videoToAnimation_desc": "Imagine transforming any face in your videos or photos with just a few clicks. Our AI wizard brings you a revolutionary visual experience: say goodbye to technical barriers and let your creativity soar. Whether you're a professional creator or an enthusiastic explorer, this face transformation tool puts the power of imagination at your fingertips. Let AI unlock endless possibilities and create a unique visual world that's truly yours.",
+        "videoToAnimation_tryButton": "Try Video Animation",
+        "videoFaceSwap_title": "Video Face Swap",
+        "videoFaceSwap_desc": "Breathe new artistic life into your videos! Our AI video-to-animation tool opens a world of creative possibilities: choose from over 30 meticulously crafted artistic styles, and let AI transform your videos into stunning animations. Whether you're a filmmaker, content creator, or just looking to add a unique touch to your videos, this tool is your go-to solution. Let AI breathe new life into your videos and unleash your creativity with stunning visual effects.",
+        "videoFaceSwap_tryButton": "Try Video Face Swap"
+
+    },
     "Welcome back": "Welcome back",
     "Current role": "Current role",
     "Enter the control panel": "Enter the control panel",
     "Enter the personal center": "Enter the personal center",
-    "test": "测试"
+    "test": "test"
 }

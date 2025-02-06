@@ -9,7 +9,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 export default function Header() {
   // const { data: session } = useSession();
   const router = useRouter();
-  // const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   const items: MenuProps["items"] = [
     {
@@ -28,7 +28,7 @@ export default function Header() {
     {
       key: "logout",
       label: "Logout",
-      // onClick: () => logout(),
+      onClick: () => logout(),
     },
   ];
 
@@ -41,18 +41,18 @@ export default function Header() {
 
         <div className="flex items-center space-x-4">
           <LanguageSwitcher />
-          {/* {session ? (
+          {user ? (
             <Dropdown menu={{ items }} placement="bottomRight">
               <div className="flex items-center space-x-2 cursor-pointer">
-                <Avatar>{session.user.name?.[0]}</Avatar>
-                <span className="text-white">{session.user.name}</span>
+                <Avatar>{user.name?.[0]}</Avatar>
+                <span className="text-white">{user.name}</span>
               </div>
             </Dropdown>
           ) : (
             <Button type="primary" onClick={() => router.push("/login")}>
               Login
             </Button>
-          )} */}
+          )}
         </div>
       </div>
     </header>
