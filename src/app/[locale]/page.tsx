@@ -6,18 +6,20 @@ import { useRouter } from "next/navigation";
 import Hyperspeed from "@/components/Hyperspeed";
 import classNames from "classnames";
 import WaveButton from "@/components/BaseComp/WaveButton";
+import { useTranslations } from "next-intl";
 export default function Home() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
+  // const { data: session, status } = useSession();
+  // const router = useRouter();
+  const t = useTranslations();
 
-  if (status === "loading") {
-    return <div className="flex justify-center items-center min-h-screen">加载中...</div>;
-  }
+  // if (status === "loading") {
+  //   return <div className="flex justify-center items-center min-h-screen">加载中...</div>;
+  // }
 
   return (
     <div className="relative h-screen ">
       {/* 第一屏 */}
-      <Hyperspeed className={classNames("absolute  inset-0", "!h-[calc(100vh-64px)]")} />
+      {/* <Hyperspeed className={classNames("absolute  inset-0", "!h-[calc(100vh-64px)]")} />
       <div className="absolute top-[35%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
         <WaveButton
           onClick={() => router.push("/profile")}
@@ -26,10 +28,10 @@ export default function Home() {
         >
           Join the Cyberpunk Plan
         </WaveButton>
-      </div>
-      <div className="h-[100vh] w-[0]"></div>
+      </div> */}
+      {/* <div className="h-[100vh] w-[0]"></div> */}
       {/* 第二屏 */}
-      <div className=" z-10 h-full flex  justify-center ">
+      {/* <div className=" z-10 h-full flex  justify-center ">
         {session ? (
           <div className="text-center h-full w-full">
             <h1 className="text-4xl font-bold mb-4 text-gray-800 !text-[red] ">Welcome back, {session.user.name}</h1>
@@ -65,8 +67,9 @@ export default function Home() {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
       {/* 第三屏及后续内容 */}
+      <div>{t("test")}</div>
       <div className="py-10 sm:py-16 sm:px-16 bg-[#F1F1F1] flex flex-col md:flex-row border-b border-[#D1D3D6] px-4 text-black">
         <div className="md:w-2/5 md:order-1 md:pl-8 flex flex-col justify-center mb-4 md:mb-0">
           <div className="mb-4">

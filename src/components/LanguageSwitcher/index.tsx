@@ -1,26 +1,19 @@
-"use client";
 import { Select } from "antd";
-import { useEffect, useState } from "react";
+import { useLocale } from "next-intl";
+import { useRouter, usePathname } from "@/config";
 
 export default function LanguageSwitcher() {
-  const [mounted, setMounted] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const locale = useLocale();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleChange = (value: string) => {
-    // i18n.changeLanguage(value);
-    // localStorage.setItem("i18nextLng", value);
+  const handleChange = (newLocale: string) => {
+    router.replace(pathname, { locale: newLocale });
   };
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <Select
-      value={"en"}
+      value={locale}
       onChange={handleChange}
       options={[
         { value: "zh", label: "中文" },

@@ -1,3 +1,4 @@
+"use client";
 import { useSession } from "next-auth/react";
 import { Avatar, Button, Dropdown } from "antd";
 import type { MenuProps } from "antd";
@@ -6,9 +7,9 @@ import { useAuth } from "@/hooks/useAuth";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Header() {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   const router = useRouter();
-  const { logout } = useAuth();
+  // const { logout } = useAuth();
 
   const items: MenuProps["items"] = [
     {
@@ -27,7 +28,7 @@ export default function Header() {
     {
       key: "logout",
       label: "Logout",
-      onClick: () => logout(),
+      // onClick: () => logout(),
     },
   ];
 
@@ -40,7 +41,7 @@ export default function Header() {
 
         <div className="flex items-center space-x-4">
           <LanguageSwitcher />
-          {session ? (
+          {/* {session ? (
             <Dropdown menu={{ items }} placement="bottomRight">
               <div className="flex items-center space-x-2 cursor-pointer">
                 <Avatar>{session.user.name?.[0]}</Avatar>
@@ -51,7 +52,7 @@ export default function Header() {
             <Button type="primary" onClick={() => router.push("/login")}>
               Login
             </Button>
-          )}
+          )} */}
         </div>
       </div>
     </header>

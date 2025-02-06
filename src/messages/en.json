@@ -1,0 +1,22 @@
+{
+    "auth": {
+        "login": {
+            "title": "Login",
+            "username": "Username",
+            "password": "Password",
+            "submit": "Login"
+        }
+    },
+    "common": {
+        "welcome": "Welcome",
+        "dashboard": "Dashboard",
+        "profile": "Profile",
+        "admin": "Admin",
+        "logout": "Logout"
+    },
+    "Welcome back": "Welcome back",
+    "Current role": "Current role",
+    "Enter the control panel": "Enter the control panel",
+    "Enter the personal center": "Enter the personal center",
+    "test": "测试"
+}
