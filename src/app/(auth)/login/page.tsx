@@ -62,7 +62,6 @@ import { Form, Input, Button, message } from "antd";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./login.module.scss";
 import { useAuth } from "@/hooks/useAuth";
-import { Trans, useTranslation } from "react-i18next";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Login() {
@@ -70,7 +69,6 @@ export default function Login() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
   const { login } = useAuth();
-  const { t } = useTranslation();
 
   const onFinish = async (values: any) => {
     const result = await login(values.username, values.password);
@@ -88,28 +86,18 @@ export default function Login() {
         <LanguageSwitcher />
       </div>
       <Form name="login" onFinish={onFinish} layout="vertical" className={styles.loginForm}>
-        <h1>
-          <Trans>Login</Trans>
-        </h1>
-        <Form.Item
-          label={t("auth.login.username")}
-          name="username"
-          rules={[{ required: true, message: t("auth.login.usernamePlaceholder") }]}
-        >
+        <h1>Login</h1>
+        <Form.Item label="Username" name="username" rules={[{ required: true, message: "Username is required" }]}>
           <Input />
         </Form.Item>
 
-        <Form.Item
-          label={t("auth.login.password")}
-          name="password"
-          rules={[{ required: true, message: t("auth.login.passwordPlaceholder") }]}
-        >
+        <Form.Item label="Password" name="password" rules={[{ required: true, message: "Password is required" }]}>
           <Input.Password />
         </Form.Item>
 
         <Form.Item>
           <Button type="primary" htmlType="submit" block>
-            {t("auth.login.submit")}
+            Submit
           </Button>
         </Form.Item>
       </Form>

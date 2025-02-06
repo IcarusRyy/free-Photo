@@ -1,10 +1,8 @@
 "use client";
-import { useTranslation } from "react-i18next";
 import { Select } from "antd";
 import { useEffect, useState } from "react";
 
 export default function LanguageSwitcher() {
-  const { i18n } = useTranslation();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -12,7 +10,7 @@ export default function LanguageSwitcher() {
   }, []);
 
   const handleChange = (value: string) => {
-    i18n.changeLanguage(value);
+    // i18n.changeLanguage(value);
     // localStorage.setItem("i18nextLng", value);
   };
 
@@ -22,7 +20,7 @@ export default function LanguageSwitcher() {
 
   return (
     <Select
-      value={i18n.language}
+      value={"en"}
       onChange={handleChange}
       options={[
         { value: "zh", label: "中文" },

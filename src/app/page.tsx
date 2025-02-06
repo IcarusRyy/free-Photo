@@ -4,14 +4,11 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Hyperspeed from "@/components/Hyperspeed";
-import { Trans } from "react-i18next";
-import { useTranslation } from "react-i18next";
 import classNames from "classnames";
 import WaveButton from "@/components/BaseComp/WaveButton";
 export default function Home() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const { t } = useTranslation();
 
   if (status === "loading") {
     return <div className="flex justify-center items-center min-h-screen">加载中...</div>;
@@ -27,7 +24,7 @@ export default function Home() {
           className="
             flex-1"
         >
-          <Trans>Join the Cyberpunk Plan</Trans>
+          Join the Cyberpunk Plan
         </WaveButton>
       </div>
       <div className="h-[100vh] w-[0]"></div>
@@ -35,24 +32,20 @@ export default function Home() {
       <div className=" z-10 h-full flex  justify-center ">
         {session ? (
           <div className="text-center h-full w-full">
-            <h1 className="text-4xl font-bold mb-4 text-gray-800 !text-[red] ">
-              <Trans>Welcome back</Trans>, {session.user.name}
-            </h1>
-            <p className="text-gray-600 mb-8">
-              <Trans>Current role</Trans>: {session.user.role}
-            </p>
+            <h1 className="text-4xl font-bold mb-4 text-gray-800 !text-[red] ">Welcome back, {session.user.name}</h1>
+            <p className="text-gray-600 mb-8">Current role: {session.user.role}</p>
             <div className="space-y-4">
               <Button type="primary" size="large" onClick={() => router.push("/dashboard")}>
-                <Trans>Enter the control panel</Trans>
+                Enter the control panel
               </Button>
               <Button type="primary" size="large" onClick={() => router.push("/profile")}>
-                <Trans>Enter the personal center</Trans>
+                Enter the personal center
               </Button>
               <Button type="primary" size="large" onClick={() => router.push("/vip")}>
-                <Trans>Enter the VIP center</Trans>
+                Enter the VIP center
               </Button>
               <Button type="primary" size="large" onClick={() => router.push("/vip")}>
-                {t("common.logout")}
+                Logout
               </Button>
             </div>
           </div>
@@ -78,24 +71,20 @@ export default function Home() {
         <div className="md:w-2/5 md:order-1 md:pl-8 flex flex-col justify-center mb-4 md:mb-0">
           <div className="mb-4">
             <div un-sm="text-3xl" className="text-xl font-semibold leading-none tracking-tight">
-              <h2 className="my-0">
-                <Trans>Video to Animation</Trans>
-              </h2>
+              <h2 className="my-0">Video to Animation</h2>
             </div>
           </div>
           <div className="mb-4">
             <div un-sm="text-xl" className="text-lg mb-6">
-              <Trans>
-                Breathe new artistic life into your videos! Our AI video-to-animation tool opens a world of creative
-                possibilities: choose from over 30 meticulously crafted artistic styles and watch as your ordinary
-                footage transforms into stunning animated masterpieces in high definition. From brief moments to
-                complete productions, every frame becomes a canvas for animation artistry, taking your creative work to
-                the next level.
-              </Trans>
+              Breathe new artistic life into your videos! Our AI video-to-animation tool opens a world of creative
+              possibilities: choose from over 30 meticulously crafted artistic styles and watch as your ordinary footage
+              transforms into stunning animated masterpieces in high definition. From brief moments to complete
+              productions, every frame becomes a canvas for animation artistry, taking your creative work to the next
+              level.
             </div>
             <div className="flex flex-wrap gap-2">
               <span className="btn-primary py-2 px-2 sm:px-6 font-semibold flex items-center">
-                <Trans>Try Video to Animation</Trans>
+                Try Video to Animation
               </span>
             </div>
           </div>
@@ -119,25 +108,19 @@ export default function Home() {
         <div className="md:w-2/5 md:order-2 md:pl-8 flex flex-col justify-center mb-4 md:mb-0">
           <div className="mb-4">
             <div un-sm="text-3xl" className="text-xl font-semibold leading-none tracking-tight">
-              <h2 className="my-0">
-                <Trans>Video Face Swap</Trans>
-              </h2>
+              <h2 className="my-0">Video Face Swap</h2>
             </div>
           </div>
           <div className="mb-4">
             <div un-sm="text-xl" className="text-lg mb-6">
-              <Trans>
-                Imagine transforming any face in your videos or photos with just a few clicks. Our AI wizard brings you
-                a revolutionary visual experience: say goodbye to technical barriers and let your creativity soar.
-                Whether you're a professional creator or an enthusiastic explorer, this face transformation tool puts
-                the power of imagination at your fingertips. Let AI unlock endless possibilities and create a unique
-                visual world that's truly yours.
-              </Trans>
+              Imagine transforming any face in your videos or photos with just a few clicks. Our AI wizard brings you a
+              revolutionary visual experience: say goodbye to technical barriers and let your creativity soar. Whether
+              you're a professional creator or an enthusiastic explorer, this face transformation tool puts the power of
+              imagination at your fingertips. Let AI unlock endless possibilities and create a unique visual world
+              that's truly yours.
             </div>
             <div className="flex flex-wrap gap-2">
-              <span className="btn-primary py-2 px-2 sm:px-6 font-semibold flex items-center">
-                <Trans>Try Face Swap</Trans>
-              </span>
+              <span className="btn-primary py-2 px-2 sm:px-6 font-semibold flex items-center">Try Face Swap</span>
             </div>
           </div>
         </div>
