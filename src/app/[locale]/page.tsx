@@ -1,22 +1,9 @@
-import { Button } from "antd";
-import Link from "next/link";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import Hyperspeed from "@/components/Hyperspeed";
-import classNames from "classnames";
-import WaveButton from "@/components/BaseComp/WaveButton";
 import { useTranslations } from "next-intl";
 import FirstPage from "./firstPage";
 import TestJump from "./testJump";
+import Footer from "@/components/Footer";
 export default function Home() {
-  // const { data: session, status } = useSession();
-  // const router = useRouter();
   const t = useTranslations("home");
-
-  // if (status === "loading") {
-  //   return <div className="flex justify-center items-center min-h-screen">加载中...</div>;
-  // }
-
   return (
     <div className="relative h-screen ">
       {/* 第一屏 */}
@@ -77,6 +64,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

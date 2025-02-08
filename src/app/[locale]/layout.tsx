@@ -1,4 +1,5 @@
 import "../globals.css";
+import "../global.scss";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Header from "@/components/Header";
 import { NextIntlClientProvider } from "next-intl";

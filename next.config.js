@@ -4,7 +4,8 @@ const withNextIntl = require("next-intl/plugin")("./src/i18n/request.ts");
 const nextConfig = {
   transpilePackages: ["antd"],
   images: {
-    disableStaticImages: true,
+    // disableStaticImages: true,
+    domains: ["cdn.goenhance.ai"],
   },
 };
 
