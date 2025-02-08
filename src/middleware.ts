@@ -1,176 +1,103 @@
-// // import { withAuth } from "next-auth/middleware";
-// // import { NextResponse } from "next/server";
-// // import { UserRole } from "@/types/auth";
-
-// // // 路由权限配置
-// // const routeConfig = {
-// //   [UserRole.USER]: ["/dashboard", "/profile"],
-// //   [UserRole.VIP]: ["/dashboard", "/profile", "/vip"],
-// //   [UserRole.ADMIN]: ["/dashboard", "/profile", "/vip", "/admin"],
-// // };
-
-// // export default withAuth(
-// //   function middleware(req) {
-// //     const { pathname } = req.nextUrl;
-// //     const userRole: any = req.nextauth?.token?.role as UserRole;
-
-// //     // 检查用户是否有权限访问当前路由
-// //     const allowedRoutes = routeConfig[userRole] || [];
-// //     const hasPermission = allowedRoutes.some((route) => pathname.startsWith(route));
-
-// //     if (!hasPermission) {
-// //       return NextResponse.redirect(new URL("/unauthorized", req.url));
-// //     }
-
-// //     return NextResponse.next();
-// //   },
-// //   {
-// //     callbacks: {
-// //       authorized: ({ token }) => !!token,
-// //     },
-// //   },
-// // );
-
-// // export const config = {
-// //   matcher: ["/dashboard/:path*", "/profile/:path*", "/vip/:path*", "/admin/:path*"],
-// // };
-// // import { withAuth } from "next-auth/middleware";
-// // import { NextResponse } from "next/server";
-// // import { UserRole } from "@/types/auth";
-
-// // // 路由权限配置
-// // const routeConfig: Record<UserRole, string[]> = {
-// //   [UserRole.USER]: ["/dashboard", "/profile"],
-// //   [UserRole.VIP]: ["/dashboard", "/profile", "/vip"],
-// //   [UserRole.ADMIN]: ["/dashboard", "/profile", "/vip", "/admin"],
-// //   [UserRole.GUEST]: [], // 添加 GUEST 角色
-// // };
-
-// // export default withAuth(
-// //   function middleware(req) {
-// //     const { pathname } = req.nextUrl;
-// //     const userRole = req.nextauth?.token?.role as UserRole;
-
-// //     // 检查用户是否有权限访问当前路由
-// //     const allowedRoutes = routeConfig[userRole] || [];
-// //     const hasPermission = allowedRoutes.some((route) => pathname.startsWith(route));
-
-// //     if (!hasPermission) {
-// //       return NextResponse.redirect(new URL("/unauthorized", req.url));
-// //     }
-
-// //     return NextResponse.next();
-// //   },
-// //   {
-// //     callbacks: {
-// //       authorized: ({ token }) => !!token,
-// //     },
-// //   },
-// // );
-
-// // export const config = {
-// //   matcher: ["/dashboard/:path*", "/profile/:path*", "/vip/:path*", "/admin/:path*"],
-// // };
-// import { withAuth } from "next-auth/middleware";
-// import { NextResponse } from "next/server";
-// import { UserRole } from "@/types/auth";
-// import type { NextRequest } from "next/server";
-
-// // 路由权限配置
-// const routeConfig: Record<UserRole, string[]> = {
-//   [UserRole.USER]: ["/dashboard", "/profile"],
-//   [UserRole.VIP]: ["/dashboard", "/profile", "/vip"],
-//   [UserRole.ADMIN]: ["/dashboard", "/profile", "/vip", "/admin"],
-//   [UserRole.GUEST]: [],
-// };
-
-// // export default withAuth(
-// //   function middleware(req) {
-// //     const { pathname } = req.nextUrl;
-// //     const userRole = req.nextauth?.token?.role as UserRole;
-
-// //     // 添加调试信息
-// //     console.log("Debug middleware:", {
-// //       pathname,
-// //       userRole,
-// //       token: req.nextauth?.token,
-// //     });
-// //     // 检查用户是否有权限访问当前路由
-// //     const allowedRoutes = routeConfig[userRole] || [];
-// //     console.log("allowedRoutes------", allowedRoutes);
-// //     const hasPermission = allowedRoutes.some((route) => pathname.startsWith(route));
-// //     console.log("hasPermission------", hasPermission);
-
-// //     if (!hasPermission) {
-// //       return NextResponse.redirect(new URL("/unauthorized", req.url));
-// //     }
-// //     // if (!hasPermission) {
-// //     //   return NextResponse.redirect(new URL("/error?error=AccessDenied", req.url));
-// //     // }
-
-// //     return NextResponse.next();
-// //   },
-// //   {
-// //     callbacks: {
-// //       authorized: ({ token }) => {
-// //         console.log("Debug authorized callback:", token);
-// //         return !!token;
-// //       },
-// //     },
-// //   },
-// // );
-// // export function middleware(req) {
-// //   console.log("================");
-// //   console.log("Middleware Triggered");
-// //   console.log("Request URL:", req.url);
-// //   console.log("================");
-
-// //   return NextResponse.next();
-// // }
-
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 import { UserRole } from "@/types/auth";
+import createIntlMiddleware from "next-intl/middleware";
+import { locales, defaultLocale } from "@/i18n/settings";
 
-// 路由权限配置
+// 路由权限配置对象：定义不同用户角色可以访问的路由路径
 const routeConfig: Record<UserRole, string[]> = {
-  [UserRole.USER]: ["/dashboard", "/profile"],
-  [UserRole.VIP]: ["/dashboard", "/profile", "/vip"],
-  [UserRole.ADMIN]: ["/dashboard", "/profile", "/vip", "/admin"],
-  [UserRole.GUEST]: [],
+  [UserRole.USER]: ["/dashboard", "/profile"], // 普通用户可访问的路径
+  [UserRole.VIP]: ["/dashboard", "/profile", "/vip"], // VIP用户可访问的路径
+  [UserRole.ADMIN]: ["/dashboard", "/profile", "/vip", "/admin"], // 管理员可访问的路径
+  [UserRole.GUEST]: [], // 游客不可访问任何受保护路径
 };
 
+// 定义公共路由数组：这些路径无需登录即可访问
+const publicPaths = ["/", "/login", "/unauthorized", "/error"];
+
+// 创建next-intl国际化中间件实例
+// 配置支持的语言、默认语言和语言前缀策略
+const intlMiddleware = createIntlMiddleware({
+  locales, // 支持的语言列表
+  defaultLocale, // 默认语言
+  localePrefix: "always", // URL中始终显示语言前缀
+});
+
 export async function middleware(req: NextRequest) {
-  // 获取 token
-  const token = await getToken({ req, secret: "test-secret-please-change-me" });
-  const { pathname } = req.nextUrl;
-  // 已登录用户访问登录页时重定向到首页
-  if (pathname === "/login") {
-    if (token) {
-      return NextResponse.redirect(new URL("/", req.url));
+  const pathname = req.nextUrl.pathname;
+
+  // 正确处理正则表达式，确保特殊字符被转义
+  const localePattern = locales.map((locale) => escapeRegExp(locale)).join("|");
+  const localePrefix = new RegExp(`^/(${localePattern})`);
+  const pathWithoutLocale = pathname.replace(localePrefix, "");
+
+  // 如果请求的是公共路径，直接通过国际化中间件处理后返回
+  if (publicPaths.includes(pathWithoutLocale)) {
+    return intlMiddleware(req);
+  }
+
+  // 从请求中获取JWT token
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+
+  // 对需要权限验证的路由进行检查
+  if (
+    pathWithoutLocale.startsWith("/dashboard") ||
+    pathWithoutLocale.startsWith("/profile") ||
+    pathWithoutLocale.startsWith("/vip") ||
+    pathWithoutLocale.startsWith("/admin")
+  ) {
+    // 如果用户未登录（没有token），重定向到登录页面
+    if (!token) {
+      const locale = getLocaleFromPath(pathname) || defaultLocale;
+      return NextResponse.redirect(new URL(`/${locale}/login`, req.url));
     }
-    // 未登录用户访问登录页,直接放行
-    return NextResponse.next();
-  }
-  if (!token) {
-    // 未登录，重定向到登录页
-    return NextResponse.redirect(new URL("/login", req.url));
-  }
 
-  const userRole = token.role as UserRole;
+    // 获取用户角色并检查权限
+    const userRole = token.role as UserRole;
+    const allowedRoutes = routeConfig[userRole] || [];
+    // 检查用户是否有权限访问当前路径
+    const hasPermission = allowedRoutes.some((route) => pathWithoutLocale.startsWith(route));
 
-  // 检查用户是否有权限访问当前路由
-  const allowedRoutes = routeConfig[userRole] || [];
-  const hasPermission = allowedRoutes.some((route) => pathname.startsWith(route));
-
-  if (!hasPermission) {
-    return NextResponse.redirect(new URL("/unauthorized", req.url));
+    // 如果没有权限，重定向到未授权页面
+    if (!hasPermission) {
+      const locale = getLocaleFromPath(pathname) || defaultLocale;
+      return NextResponse.redirect(new URL(`/${locale}/unauthorized`, req.url));
+    }
   }
 
-  return NextResponse.next();
+  // 通过所有权限检查后，交由国际化中间件处理
+  return intlMiddleware(req);
 }
 
+// 辅助函数：转义正则表达式特殊字符
+function escapeRegExp(string: string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// 辅助函数：从路径中获取语言
+function getLocaleFromPath(pathname: string): string | undefined {
+  for (const locale of locales) {
+    if (pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`) {
+      return locale;
+    }
+  }
+  return undefined;
+}
+
+// 中间件配置：定义哪些路径需要经过中间件处理
+// export const config = {
+//   matcher: [
+//     "/((?!api|_next|.*\\..*).*)", // 匹配所有路径，但排除api路由、_next路径和带文件扩展名的路径
+//     "/", // 匹配根路径
+//     `/(${locales.map((locale) => escapeRegExp(locale)).join("|")})/:path*`, // 匹配带有语言前缀的所有路径
+//   ],
+// };
 export const config = {
-  matcher: ["/login", "/dashboard/:path*", "/profile/:path*", "/vip/:path*", "/admin/:path*"],
+  matcher: [
+    // 排除 api 路由、_next 和静态资源
+    "/((?!api|_next|.*\\..*).*)",
+    // 匹配带有语言前缀的路径
+    "/:locale(zh|en)/:path*",
+  ],
 };

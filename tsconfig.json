@@ -20,12 +20,14 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "@/app/*": ["./src/app/*"],
       "@/components/*": ["./src/components/*"],
       "@/types/*": ["./src/types/*"],
       "@/hooks/*": ["./src/hooks/*"],
       "@/i18n/*": ["./src/i18n/*"],
       "@/utils/*": ["./src/utils/*"],
-      "@/constant/*": ["./src/constant/*"]
+      "@/constant/*": ["./src/constant/*"],
+      "@/messages/*": ["./src/messages/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.js"],
