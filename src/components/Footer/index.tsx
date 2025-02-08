@@ -1,27 +1,5 @@
-import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
-
-const ItemList = ({ title, items }: { title: string; items: { url: string; text: string }[] }) => {
-  const t = useTranslations("footer");
-  return (
-    <div className="w-full sm:w-[180px] text-left mt-10 sm:mt-3" style={{ opacity: 1, transform: "none" }}>
-      <h3 className="font-medium text-xl mb-2 sm:mb-6 mt-0  LandingLayout_title">{t(title)}</h3>
-      <ul className="pl-0">
-        {items.map((item, index) => (
-          <li className="list-none overflow-hidden" key={index}>
-            <Link
-              href="/"
-              className="text-[#D1D1D1] w-full block mt-3 w-full overflow-hidden  LandingLayout_headerItem"
-            >
-              <div className="w-full  text-[16px] overflow-hidden">{t(item.text)}</div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+import ItemList from "./ItemList";
 const Footer = () => {
   return (
     <div className="overflow-hidden pb-[40px] sm:pb-[40px] ">
@@ -51,6 +29,7 @@ const Footer = () => {
               { url: "/", text: "Character Animation" },
               { url: "/", text: "Image Enhance" },
             ]}
+            animationDelay="0.1s"
           />
           <ItemList
             title="RESOURCES"
@@ -61,6 +40,7 @@ const Footer = () => {
               { url: "/", text: "Tutorials" },
               { url: "/", text: "FAQ" },
             ]}
+            animationDelay="0.4s"
           />
           <ItemList
             title="CONNECT"
@@ -71,6 +51,7 @@ const Footer = () => {
               { url: "/", text: "Discord" },
               { url: "/", text: "Github" },
             ]}
+            animationDelay="0.8s"
           />
           <ItemList
             title="Community"
@@ -78,6 +59,7 @@ const Footer = () => {
               { url: "/", text: "Discord" },
               { url: "/", text: "twitter" },
             ]}
+            animationDelay="1s"
           />
         </div>
       </div>
