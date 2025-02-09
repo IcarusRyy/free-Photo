@@ -9,6 +9,7 @@ import { useEffect, useState } from "react"; // 添加导入
 import classNames from "classnames";
 import "./index.scss";
 import { useLocale } from "next-intl";
+import Image from "next/image";
 export default function Header() {
   // const { data: session } = useSession();
   const router = useRouter();
@@ -56,7 +57,7 @@ export default function Header() {
   );
   return (
     <header
-      className={classNames(" z-50 backdrop-blur-sm Header_Comp ", {
+      className={classNames(" z-50 backdrop-blur-sm Header_Comp", {
         Header_Comp_Opaque: isScrolled || isOpenMenu,
       })}
     >
@@ -76,11 +77,39 @@ export default function Header() {
               return document.getElementById("nav_box") || document.body;
             }}
           >
-            <div className="cursor-pointer mainColorHover">App</div>
+            <div className="cursor-pointer mainColorHover px-[16px] py-[8px] flex items-center gap-[4px] group">
+              <span
+                className={classNames({
+                  mainColor: isOpenMenu,
+                })}
+              >
+                App
+              </span>
+              <Image
+                src="/baseIcons/down.svg"
+                alt="down"
+                width={20}
+                height={20}
+                className={classNames({
+                  invert: !isScrolled && !isOpenMenu, // 当背景透明时使用白色图标
+                  "group-hover:hidden": true, // hover时隐藏
+                  hidden: isOpenMenu,
+                })}
+              />
+              <Image
+                src="/baseIcons/up.svg"
+                className={classNames("hidden group-hover:block", {
+                  "!block": isOpenMenu,
+                })}
+                alt="up"
+                width={20}
+                height={20}
+              />
+            </div>
           </Dropdown>
-          <div className="mainColorHover">价格</div>
-          <div className="mainColorHover">博客</div>
-          <div className="mainColorHover">工具集</div>
+          <div className="mainColorHover  px-[16px] py-[8px]">价格</div>
+          <div className="mainColorHover  px-[16px] py-[8px]">博客</div>
+          <div className="mainColorHover  px-[16px] py-[8px]">工具集</div>
         </div>
         <div className="flex items-center space-x-4">
           <LanguageSwitcher />

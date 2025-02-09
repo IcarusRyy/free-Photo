@@ -6,7 +6,7 @@ const nextConfig = {
   transpilePackages: ["antd"],
   images: {
     // disableStaticImages: true,
-    domains: ["cdn.goenhance.ai"],
+    // domains: ["cdn.goenhance.ai"],
   },
 };
 

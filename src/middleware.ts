@@ -97,6 +97,7 @@ export const config = {
   matcher: [
     // 排除 api 路由、_next 和静态资源
     "/((?!api|_next|.*\\..*).*)",
+    // "/((?!api|_next|_vercel|baseIcons|.*\\..*).*)",
     // 匹配带有语言前缀的路径
     "/:locale(zh|en)/:path*",
   ],
