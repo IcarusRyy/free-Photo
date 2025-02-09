@@ -1,0 +1,14 @@
+.Header_Comp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: background-color 0.3s ease; /* 添加过渡效果 */
+  //   background-color: rgba(0, 0, 0, 0); /* 透明背景 */
+  background-color: transparent;
+  color: #fff;
+}
+.Header_Comp_Opaque {
+  background-color: white; /* 不透明背景 */
+  color: black;
+}

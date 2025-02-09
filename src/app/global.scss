@@ -1,10 +1,10 @@
-.LandingLayout_title {
-  background-image: linear-gradient(90deg, #e05599, #6e7fff);
+.mainColor {
+  background-image: linear-gradient(90deg, #ff7e5f, #feb47b);
   color: transparent;
   -webkit-background-clip: text;
 }
-.LandingLayout_headerItem:hover {
-  background-image: linear-gradient(90deg, #e05599, #6e7fff);
+.mainColorHover:hover {
+  background-image: linear-gradient(90deg, #ff7e5f, #feb47b);
   -webkit-background-clip: text;
   color: transparent;
 }

@@ -139,7 +139,7 @@ const Hyperspeed = memo(({ className }: { className: string }) => {
   return (
     <div
       ref={containerRef}
-      className={classnames("h-full w-full", className)}
+      className={classnames("h-full w-full ", className)}
       style={{ minHeight: "300px" }} // 保持占位高度
     >
       {shouldRender && (
@@ -179,6 +179,52 @@ const Hyperspeed = memo(({ className }: { className: string }) => {
               leftCars: [0xd856bf, 0x6750a2, 0xc247ac],
               rightCars: [0x03b3c3, 0x0e5ea5, 0x324555],
               sticks: 0x03b3c3,
+
+              // roadColor: 0x2c2c2c, // 更新为较深的颜色
+              // islandColor: 0x3a3a3a, // 更新为较深的颜色
+              // background: 0x1a1a1a, // 更新为较深的背景色
+              // shoulderLines: 0xffffff,
+              // brokenLines: 0xffffff,
+              // leftCars: [0xd856bf, 0x6750a2, 0xc247ac],
+              // rightCars: [0x03b3c3, 0x0e5ea5, 0x324555],
+              // sticks: 0x03b3c3,
+
+              // roadColor: 0x4b0082, // 深紫色
+              // islandColor: 0x1e90ff, // 道奇蓝
+              // background: 0x0a0a0a, // 深色背景
+              // shoulderLines: 0xffffff, // 白色肩线
+              // brokenLines: 0xffffff, // 白色破损线
+              // leftCars: [0xd856bf, 0x6750a2, 0xc247ac], // 左侧车辆颜色
+              // rightCars: [0x03b3c3, 0x0e5ea5, 0x324555], // 右侧车辆颜色
+              // sticks: 0x03b3c3, // 交通标志颜色
+
+              // roadColor: 0xff7e5f, // 珊瑚色
+              // islandColor: 0xfeb47b, // 金色
+              // background: 0x0a0a0a, // 深色背景
+              // shoulderLines: 0xffffff, // 白色肩线
+              // brokenLines: 0xffffff, // 白色破损线
+              // leftCars: [0xd856bf, 0x6750a2, 0xc247ac], // 左侧车辆颜色
+              // rightCars: [0x03b3c3, 0x0e5ea5, 0x324555], // 右侧车辆颜色
+              // sticks: 0x03b3c3, // 交通标志颜色
+
+              // roadColor: 0x2c2c2c, // 深色道路
+              // roadColor: 0x080808,
+              // islandColor: 0x3a3a3a, // 稍亮的岛屿
+              // background: 0x0a0a0a, // 深色背景
+              // shoulderLines: 0xffffff, // 白色肩线
+              // brokenLines: 0xffffff, // 白色破损线
+              // leftCars: [0xff7e5f, 0x6750a2, 0xc247ac], // 左侧车辆颜色，使用珊瑚色
+              // rightCars: [0xfeb47b, 0x0e5ea5, 0x324555], // 右侧车辆颜色，使用金色
+              // sticks: 0x03b3c3, // 交通标志颜色
+
+              // roadColor: 0x1a1a1a, // 更深的道路颜色
+              // islandColor: 0x4a90e2, // 明亮的蓝色岛屿
+              // background: 0x0a0a0a, // 深色背景
+              // shoulderLines: 0xffffff, // 白色肩线
+              // brokenLines: 0xffffff, // 白色破损线
+              // leftCars: [0xff7e5f, 0x00ffcc, 0xc247ac], // 左侧车辆颜色，使用珊瑚色和亮青色
+              // rightCars: [0xfeb47b, 0x0e5ea5, 0x324555], // 右侧车辆颜色，使用金色
+              // sticks: 0xffcc00, // 亮黄色交通标志颜色
             },
           }}
         />

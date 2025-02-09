@@ -54,14 +54,11 @@ const ItemList = ({
       }} // 控制初始状态
       ref={ref}
     >
-      <h3 className="font-medium text-xl mb-2 sm:mb-6 mt-0  LandingLayout_title">{t(title)}</h3>
+      <h3 className="font-medium text-xl mb-2 sm:mb-6 mt-0  mainColor">{t(title)}</h3>
       <ul className="pl-0">
         {items.map((item, index) => (
           <li className="list-none overflow-hidden" key={index}>
-            <Link
-              href="/"
-              className="text-[#D1D1D1] w-full block mt-3 w-full overflow-hidden  LandingLayout_headerItem"
-            >
+            <Link href="/" className="text-[#D1D1D1] w-full block mt-3 w-full overflow-hidden  mainColorHover">
               <div className="w-full  text-[16px] overflow-hidden">{t(item.text)}</div>
             </Link>
           </li>
