@@ -50,9 +50,28 @@ export default function Header() {
     };
   }, [locale]);
   const dropdownContent = () => (
-    <div style={{ width: "100%", height: "200px", backgroundColor: "white" }}>
-      {/* 自定义下拉内容 */}
-      <p>下拉内容</p>
+    <div style={{ width: "100%", backgroundColor: "white" }}>
+      <div className="pt-6 pb-4  w-[70%] mx-auto flex justify-center  gap-[64px]">
+        <div className="pr-[40px] border-r-solid w-30vw  border-r-[#dbdbdb] border-r-[2px] min-h-74 mb-4">
+          <Image src="/nav/video2video.gif" alt="video2video" width={305} height={168} />
+          <div className="mt-[16px] text-xl font-bold">视频转视频</div>
+          <div className="mt-[12px] text-sm text-[#808080]">将你的视频转换为不同风格的动漫视频</div>
+        </div>
+        <div className="h-full flex-1">
+          <div className="mb-2">
+            <span>视频</span>
+            <div className="mainColorHover  px-[16px] py-[8px]">价格</div>
+            <div className="mainColorHover  px-[16px] py-[8px]">博客</div>
+            <div className="mainColorHover  px-[16px] py-[8px]">工具集</div>
+          </div>
+          <div className="mb-2">
+            <span>视频</span>
+            <div className="mainColorHover  px-[16px] py-[8px]">价格</div>
+            <div className="mainColorHover  px-[16px] py-[8px]">博客</div>
+            <div className="mainColorHover  px-[16px] py-[8px]">工具集</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
   return (
