@@ -12,10 +12,12 @@
         "dashboard": "控制台",
         "profile": "个人中心",
         "admin": "管理后台",
-        "logout": "退出登录"
+        "logout": "退出登录",
+        "WuKong AI": "悟空 AI"
     },
     "home": {
         "joinTheCyberpunkPlan": "加入赛博朋克计划",
+
         "videoToAnimation_title": "视频转动漫",
         "videoToAnimation_desc": "想象一下，只需点击几下，您就能在任何视频或照片中实现面部转换的魔法。我们的AI魔法师为您带来革命性的视觉体验：告别繁琐的技术门槛，让创意自由绽放。无论您是专业创作者还是热爱尝鲜的普通用户，都能轻松驾驭这款面部替换神器，让您的创意作品焕发独特魅力。让AI为您开启无限可能，创造专属于您的精彩视界。",
         "videoToAnimation_tryButton": "立即体验",

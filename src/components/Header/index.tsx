@@ -20,6 +20,7 @@ export default function Header() {
   const locale = useLocale();
   const [activeItem, setActiveItem] = useState(HEADER_CONFIG[0].items[0]); // 添加新状态，默认显示第一个项目
   const t = useTranslations("header");
+  const commonT = useTranslations("common");
   const items: MenuProps["items"] = [
     {
       key: "dashboard",
@@ -102,8 +103,12 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <h1 className="text-xl font-bold mainColorHover ">Logo</h1>
+          <div className="flex items-center space-x-4 border border-white px-[2px] py-[2px] rounded-[4px] relative w-[32px] h-[32px] ">
+            <Image src="/logo/logo.jpg" alt="logo" fill className="object-cover rounded-[4px] "></Image>
+          </div>
+          <div className=" text-xl font-bold">{commonT("WuKong AI")}</div>
         </div>
+
         <div className="flex items-center gap-[16px] cursor-pointer" id="nav_box">
           <Dropdown
             dropdownRender={dropdownContent}

@@ -12,10 +12,12 @@
         "dashboard": "Dashboard",
         "profile": "Profile",
         "admin": "Admin",
-        "logout": "Logout"
+        "logout": "Logout",
+        "WuKong AI": "WuKong AI"
     },
     "home": {
         "joinTheCyberpunkPlan": "Join the Cyberpunk Plan",
+
         "videoToAnimation_title": "Video to Animation",
         "videoToAnimation_desc": "Imagine transforming any face in your videos or photos with just a few clicks. Our AI wizard brings you a revolutionary visual experience: say goodbye to technical barriers and let your creativity soar. Whether you're a professional creator or an enthusiastic explorer, this face transformation tool puts the power of imagination at your fingertips. Let AI unlock endless possibilities and create a unique visual world that's truly yours.",
         "videoToAnimation_tryButton": "Try Video Animation",
