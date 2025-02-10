@@ -23,6 +23,62 @@
         "videoFaceSwap_desc": "让您的视频焕发艺术新生命！我们的AI视频动漫转换工具为您打开创意新世界：30多种精心设计的艺术风格任您挑选，只需简单操作即可将普通视频转化为高清动漫杰作。无论是几秒钟的精彩瞬间，还是完整的视频作品，都能完美呈现动漫艺术的独特魅力，让您的创作锦上添花。",
         "videoFaceSwap_tryButton": "立即体验"
     },
+    "header": {
+        "Video Apps": "视频应用",
+
+        "Video to Video": "视频转视频",
+        "videoToVideo_desc": "将您的视频转换为不同的动漫风格，创造独特的视觉效果。",
+
+        "AI Video Generator": "AI视频生成器",
+        "aiVideoGenerator_desc": "将文本或图像转换为视频，将您的愿景变为现实！",
+
+        "Creative Style Transfer": "创意风格转换",
+        "creativeStyleTransfer_desc": "将您的视频转换为创意风格，创造独特的视觉效果。",
+
+        "Video Face Swap": "视频换脸",
+        "videoFaceSwap_desc": "改变视频中的任何面部，创造独特的视觉效果。",
+
+        "Character Animation": "角色动画",
+        "characterAnimation_desc": "使用AI创建一个具有一致角色的视频，创造独特的视觉效果。",
+
+        "Go Act": "Go Act",
+        "goAct_desc": "视频将角色带入生活 - 每个人都是演员与Go Act",
+
+        "Video Effect": "视频效果",
+        "videoEffect_desc": "添加视频效果到您的视频，创造独特的视觉效果。",
+
+        "Consistent Character Video": "一致性角色视频",
+        "consistentCharacterVideo_desc": "创建一个具有一致角色的视频，创造独特的视觉效果。",
+
+
+
+
+
+
+
+        "Image Apps": "图像应用",
+
+        "Text To Image": "文本转图像",
+        "textToImage_desc": "使用强大的图像生成将文本转换为图像。",
+
+        "Image Face Swap": "图像换脸",
+        "imageFaceSwap_desc": "无缝地交换您的照片中的面部，创造独特的视觉效果。",
+
+        "Image to Prompt": "图像转提示",
+        "imageToPrompt_desc": "将图像转换为详细的文本提示，使用强大的图像生成。",
+
+        "Image Enhancer": "图像增强",
+        "imageEnhancer_desc": "增强和放大您的图像到极端细节",
+
+        "Image Blender": "图像融合",
+        "imageBlender_desc": "将多张图像融合在一起，创造独特的视觉效果。",
+
+        "AI Logo Generator": "AI Logo生成器",
+        "aiLogoGenerator_desc": "使用AI创建一个独特的Logo，创造独特的视觉效果。"
+
+
+
+    },
     "footer": {
         "Product": "产品",
         "Video to Video": "视频转视频",

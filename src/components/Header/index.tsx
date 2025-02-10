@@ -8,8 +8,9 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useEffect, useState } from "react"; // 添加导入
 import classNames from "classnames";
 import "./index.scss";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
+import HEADER_CONFIG from "./headerConfig";
 export default function Header() {
   // const { data: session } = useSession();
   const router = useRouter();
@@ -17,9 +18,12 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false); // 添加状态
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const locale = useLocale();
+  const [activeItem, setActiveItem] = useState(HEADER_CONFIG[0].items[0]); // 添加新状态，默认显示第一个项目
+  const t = useTranslations("header");
   const items: MenuProps["items"] = [
     {
       key: "dashboard",
+
       label: "Dashboard",
       onClick: () => router.push("/dashboard"),
     },
@@ -40,7 +44,6 @@ export default function Header() {
   useEffect(() => {
     setIsScrolled(window.scrollY > 10);
     const handleScroll = () => {
-      console.log(window.scrollY > 10);
       setIsScrolled(window.scrollY > 10); // 根据滚动距离更新状态
     };
 
@@ -52,24 +55,41 @@ export default function Header() {
   const dropdownContent = () => (
     <div style={{ width: "100%", backgroundColor: "white" }}>
       <div className="pt-6 pb-4  w-[70%] mx-auto flex justify-center  gap-[64px]">
-        <div className="pr-[40px] border-r-solid w-30vw  border-r-[#dbdbdb] border-r-[2px] min-h-74 mb-4">
-          <Image src="/nav/video2video.gif" alt="video2video" width={305} height={168} />
-          <div className="mt-[16px] text-xl font-bold">视频转视频</div>
-          <div className="mt-[12px] text-sm text-[#808080]">将你的视频转换为不同风格的动漫视频</div>
+        <div className="pr-[40px] border-r-solid w-30vw  border-r-[#dbdbdb] border-r-[2px] min-h-74 mb-4  w-[407px] flex-shrink-0">
+          {/* <Image
+            src={`/nav/${activeItem.constantName}`}
+            alt={activeItem.title}
+            width={367}
+            height={168}
+            className="object-cover"
+          /> */}
+          <div className="w-[367px] h-[168px] relative">
+            <Image src={`/nav/${activeItem.constantName}`} alt={t(activeItem.title)} fill className="object-cover" />
+          </div>
+          <div className="mt-[16px] text-xl font-bold truncate">{t(activeItem.title)}</div>
+
+          <div className="mt-[12px] text-sm text-[#808080] line-clamp-2">{t(activeItem.desc)}</div>
         </div>
-        <div className="h-full flex-1">
-          <div className="mb-2">
-            <span>视频</span>
-            <div className="mainColorHover  px-[16px] py-[8px]">价格</div>
-            <div className="mainColorHover  px-[16px] py-[8px]">博客</div>
-            <div className="mainColorHover  px-[16px] py-[8px]">工具集</div>
-          </div>
-          <div className="mb-2">
-            <span>视频</span>
-            <div className="mainColorHover  px-[16px] py-[8px]">价格</div>
-            <div className="mainColorHover  px-[16px] py-[8px]">博客</div>
-            <div className="mainColorHover  px-[16px] py-[8px]">工具集</div>
-          </div>
+        <div className="h-full flex-1 flex flex-col gap-[20px]">
+          {HEADER_CONFIG.map((item) => (
+            <div key={item.title}>
+              <div className="text-base text-[#808080]">{t(item.title)}</div>
+              <div className="grid grid-cols-3 ml-[20px]">
+                {item.items.map((child) => (
+                  <div
+                    key={child.title}
+                    className=" text-[14px] cursor-pointer h-[64px] flex items-center px-[12px] mainColorHover"
+                    onMouseEnter={() => setActiveItem(child)}
+                  >
+                    <div className=" font-[500]">{t(child.title)}</div>
+                    {child.isNew && (
+                      <div className="ml-[12px] text-[16px] text-[#FFF] mainBg px-[4px]  rounded-[6px] ">New</div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

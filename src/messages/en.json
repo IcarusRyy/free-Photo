@@ -24,6 +24,53 @@
         "videoFaceSwap_tryButton": "Try Video Face Swap"
 
     },
+    "header": {
+        "Video Apps": "Video Apps",
+
+        "Video to Video": "Video to Video",
+        "videoToVideo_desc": "Turn your video into different anime style videos",
+
+        "AI Video Generator": "AI Video Generator",
+        "aiVideoGenerator_desc": "Turn text or image to video, bring your vision to life!",
+
+        "Creative Style Transfer": "Creative Style Transfer",
+        "creativeStyleTransfer_desc": "Transfer your video into a creative style.",
+
+        "Video Face Swap": "Video Face Swap",
+        "videoFaceSwap_desc": "Change any face in videos with our AI video face swapper",
+
+        "Character Animation": "Character Animation",
+        "characterAnimation_desc": "Creating character animation with only one image.",
+
+        "Go Act": "Go Act",
+        "goAct_desc": "Video brings characters to life - everyone's an actor with Go Act",
+
+        "Video Effect": "Video Effect",
+        "videoEffect_desc": "Add video effects to your video",
+
+        "Consistent Character Video": "Consistent Character Video",
+        "consistentCharacterVideo_desc": "Create a video with a consistent character",
+
+        "Image Apps": "Image Apps",
+
+        "Text To Image": "Text To Image",
+        "textToImage_desc": "Convert text to image using powerful Image Generation",
+
+        "Image Face Swap": "Image Face Swap",
+        "imageFaceSwap_desc": "Seamlessly swap faces in your photos.",
+
+        "Image to Prompt": "Image to Prompt",
+        "imageToPrompt_desc": "Convert images to detailed text prompts with our AI-powered tool.",
+
+        "Image Enhancer": "Image Enhancer",
+        "imageEnhancer_desc": "Enhance and upscale your image to extreme detail",
+
+        "Image Blender": "Image Blender",
+        "imageBlender_desc": "Blend multiple images into one, create unique images with AI",
+
+        "AI Logo Generator": "AI Logo Generator",
+        "aiLogoGenerator_desc": "Create a logo with AI"
+    },
     "footer": {
         "Product": "Product",
         "Video to Video": "Video to Video",
